@@ -6,6 +6,6 @@ Proposed functionalities:
 * A `mutate supersupershockrifle` command which spawns a SuperShockRifle with 100000 hitdamage.
 * A `mutate superwarshell` command which spawns a warshell with a big radius?
 * A `mutate teleportto <playername>` command.
-* A mutate command which spawns a warshell and lets the spawner fly around with it.
-* A mutate command which makes all SpawnFactories visible and shows the remaining spawn count for each of them.
+* A `mutate guidedwarshell` command which spawns a warshell and lets the spawner fly around with it.
+* A `mutate showfactories` command which makes all SpawnFactories visible and shows the remaining spawn count for each of them.
 * 
