@@ -1,7 +1,7 @@
 class MonsterHuntAssist expands Mutator;
 
 function Mutate(string MutateString, PlayerPawn Sender) {
-	if(Caps(MutateString) == "help") {
+	if(Caps(MutateString) == "HELP") {
 		Sender.SendMessage("Command overview for MonsterHuntAssist:");
 		Sender.SendMessage("- mutate supersupershockrifle");
 		Sender.SendMessage("- mutate superwarshell");
