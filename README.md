@@ -1,7 +1,21 @@
 # MonsterHuntAssist
 An Unreal Tournament mutator with several functions to assist with the MonsterHunt gameplay
 
-Proposed functionalities:
+**How to continue development:**
+
+Go to your UnrealTournament directory
+
+Run: `git clone https://github.com/Engineer9736/MonsterHuntAssist.git`
+
+This will create a MonsterHuntAssist directory with all the contents.
+
+**How to compile**
+
+Add `EditPackages=MonsterHuntAssist` to UnrealTournament.ini
+
+Run `ucc make` in a Command Prompt.
+
+**Proposed functionalities:**
 * A `mutate help` command which lists all available functions.
 * A `mutate supersupershockrifle` command which spawns a SuperShockRifle with 100000 hitdamage.
 * A `mutate superwarshell` command which spawns a warshell with a big radius?
