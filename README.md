@@ -4,12 +4,15 @@ An Unreal Tournament mutator with several functions to assist with the MonsterHu
 **How to continue development:**
 
 Go to your UnrealTournament directory
+
 Run: `git clone <cloneurl>`
+
 This will create a MonsterHuntAssist directory with all the contents.
 
 **How to compile**
 
 Add `EditPackages=MonsterHuntAssist` to UnrealTournament.ini
+
 Run `ucc make` in a Command Prompt.
 
 **Proposed functionalities:**
