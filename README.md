@@ -5,7 +5,7 @@ An Unreal Tournament mutator with several functions to assist with the MonsterHu
 
 Go to your UnrealTournament directory
 
-Run: `git clone <cloneurl>`
+Run: `git clone https://github.com/Engineer9736/MonsterHuntAssist.git`
 
 This will create a MonsterHuntAssist directory with all the contents.
 
