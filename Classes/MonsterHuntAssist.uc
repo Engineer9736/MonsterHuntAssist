@@ -1,22 +1,37 @@
 class MonsterHuntAssist expands Mutator;
 
 function Mutate(string MutateString, PlayerPawn Sender) {
-	if(Caps(MutateString) == "HELP") {
-		Sender.SendMessage("Command overview for MonsterHuntAssist:");
-		Sender.SendMessage("- mutate supersupershockrifle");
-		Sender.SendMessage("- mutate superwarshell");
-		Sender.SendMessage("- mutate teleportto <playername>");
-		Sender.SendMessage("- mutate guidedwarshell");
-		Sender.SendMessage("- mutate showfactories");
-		Sender.SendMessage("- mutate saveloc");
-		Sender.SendMessage("- mutate loadloc");
+	local SuperShockRifle ssr;
+	local ThingFactory TF;
+	local int i;
+	
+	if(Left(Caps(MutateString),4) == "HELP") {
+		Sender.BroadcastMessage("Command overview for MonsterHuntAssist:");
+		Sender.BroadcastMessage("- mutate supersupershockrifle");
+		Sender.BroadcastMessage("- mutate superwarshell");
+		Sender.BroadcastMessage("- mutate teleportto <playername>");
+		Sender.BroadcastMessage("- mutate guidedwarshell");
+		Sender.BroadcastMessage("- mutate showfactories");
+		Sender.BroadcastMessage("- mutate saveloc");
+		Sender.BroadcastMessage("- mutate loadloc");
 	}
 	
-	if(Caps(MutateString) == "SUPERSUPERSHOCKRIFLE") {
+	if(Left(Caps(MutateString), 20) == "SUPERSUPERSHOCKRIFLE") {
 		
 		// Spawn a regular SuperShockRifle.
+		ssr = Spawn(class'Botpack.SuperShockRifle');
+		
+		// Set the location in front of the player.
+		ssr.SetLocation(Sender.Location);
 		
 		// Set the hitdamage variable to 100000.
+		ssr.default.hitdamage = 100000;
+		
+		// Set the drawstyle to modulated so it's clear that it's a modified weapon.
+		ssr.default.style = STY_Modulated;
+		
+		// Set the pickup message to something different.
+		ssr.default.pickupmessage = "You got the Super Super Shock Rifle.";
 	}
 	
 	if(Caps(MutateString) == "SUPERWARSHELL") {
@@ -38,7 +53,15 @@ function Mutate(string MutateString, PlayerPawn Sender) {
 	
 	if(Caps(MutateString) == "SHOWFACTORIES") {
 		
+		i = 0;
+		
 		// Set the display style of all factories to visible.
+		foreach AllActors(class'ThingFactory', TF) {
+			TF.bHidden = false;
+			i++;
+		}
+		
+		Sender.BroadcastMessage("Made " $ i $ " ThingFactories visible.");
 		
 		// Find a way to display the remaining spawncount. Perhaps this can be taken from FBar.
 		

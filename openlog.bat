@@ -1,0 +1,1 @@
+notepad ..\System\UnrealTournament.log
