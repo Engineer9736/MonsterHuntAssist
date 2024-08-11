@@ -3,7 +3,9 @@ class MonsterHuntAssist expands Mutator;
 function Mutate(string MutateString, PlayerPawn Sender) {
 	local SuperShockRifle ssr;
 	local ThingFactory TF;
+	local CreatureFactory CF;
 	local int i;
+	local Actor Owner;
 	
 	if(Left(Caps(MutateString),4) == "HELP") {
 		Sender.BroadcastMessage("Command overview for MonsterHuntAssist:");
@@ -18,17 +20,8 @@ function Mutate(string MutateString, PlayerPawn Sender) {
 	
 	if(Left(Caps(MutateString), 20) == "SSUPERSHOCKRIFLE") {
 		
-		// Spawn a regular SuperShockRifle.
-		ssr = Spawn( class'MonsterHuntAssist.SSuperShockRifle',,,Sender.Location + 72 * Vector(Sender.Rotation) + vect(0,0,1) * 15 );
-		
-		// Set the hitdamage variable to 100000.
-		//ssr.default.hitdamage = 100000;
-		
-		// Set the drawstyle to modulated so it's clear that it's a modified weapon.
-		//ssr.default.style = STY_Modulated;
-		
-		// Set the pickup message to something different.
-		//ssr.default.pickupmessage = "You got the Super Super Shock Rifle.";
+		// Spawn the SSuperShockRifle.
+		Spawn( class'MonsterHuntAssist.SSuperShockRifle',,,Sender.Location + 72 * Vector(Sender.Rotation) + vect(0,0,1) * 15 );
 	}
 	
 	if(Caps(MutateString) == "SUPERWARSHELL") {
@@ -45,7 +38,23 @@ function Mutate(string MutateString, PlayerPawn Sender) {
 	
 	if(Caps(MutateString) == "GUIDEDWARSHELL") {
 	
-		// Todo: Look in the Redeemer class how this functionality is started and mimic it.
+		// Look in the Redeemer class how this functionality is started and mimic it.
+		
+		/*Owner = Sender;
+		
+		PlayerPawn(Owner).ShakeView(ShakeTime, ShakeMag, ShakeVert);
+		bPointing=True;
+		Pawn(Owner).PlayRecoil(FiringSpeed);
+		PlayFiring();
+		GuidedShell = GuidedWarShell(ProjectileFire(AltProjectileClass, ProjectileSpeed, bWarnTarget));
+		if (GuidedShell != none)
+		{
+		    GuidedShell.SetOwner(Owner);
+		    PlayerPawn(Owner).ViewTarget = GuidedShell;
+		    GuidedShell.Guider = PlayerPawn(Owner);
+		    ClientAltFire(0);
+		    GotoState('Guiding');
+		}*/
 	}
 	
 	if(Caps(MutateString) == "SHOWFACTORIES") {
@@ -58,7 +67,12 @@ function Mutate(string MutateString, PlayerPawn Sender) {
 			i++;
 		}
 		
-		Sender.BroadcastMessage("Made " $ i $ " ThingFactories visible.");
+		foreach AllActors(class'CreatureFactory', CF) {
+			CF.bHidden = false;
+			i++;
+		}
+		
+		Sender.BroadcastMessage("Made " $ i $ " factories visible.");
 		
 		// Find a way to display the remaining spawncount. Perhaps this can be taken from FBar.
 		
