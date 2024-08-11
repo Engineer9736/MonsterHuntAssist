@@ -7,7 +7,7 @@ function Mutate(string MutateString, PlayerPawn Sender) {
 	
 	if(Left(Caps(MutateString),4) == "HELP") {
 		Sender.BroadcastMessage("Command overview for MonsterHuntAssist:");
-		Sender.BroadcastMessage("- mutate supersupershockrifle");
+		Sender.BroadcastMessage("- mutate ssupershockrifle");
 		Sender.BroadcastMessage("- mutate superwarshell");
 		Sender.BroadcastMessage("- mutate teleportto <playername>");
 		Sender.BroadcastMessage("- mutate guidedwarshell");
@@ -16,22 +16,19 @@ function Mutate(string MutateString, PlayerPawn Sender) {
 		Sender.BroadcastMessage("- mutate loadloc");
 	}
 	
-	if(Left(Caps(MutateString), 20) == "SUPERSUPERSHOCKRIFLE") {
+	if(Left(Caps(MutateString), 20) == "SSUPERSHOCKRIFLE") {
 		
 		// Spawn a regular SuperShockRifle.
-		ssr = Spawn(class'Botpack.SuperShockRifle');
-		
-		// Set the location in front of the player.
-		ssr.SetLocation(Sender.Location);
+		ssr = Spawn( class'MonsterHuntAssist.SSuperShockRifle',,,Sender.Location + 72 * Vector(Sender.Rotation) + vect(0,0,1) * 15 );
 		
 		// Set the hitdamage variable to 100000.
-		ssr.default.hitdamage = 100000;
+		//ssr.default.hitdamage = 100000;
 		
 		// Set the drawstyle to modulated so it's clear that it's a modified weapon.
-		ssr.default.style = STY_Modulated;
+		//ssr.default.style = STY_Modulated;
 		
 		// Set the pickup message to something different.
-		ssr.default.pickupmessage = "You got the Super Super Shock Rifle.";
+		//ssr.default.pickupmessage = "You got the Super Super Shock Rifle.";
 	}
 	
 	if(Caps(MutateString) == "SUPERWARSHELL") {
