@@ -4,7 +4,7 @@ class MonsterHuntAssist expands Mutator;
 // Also ThingFactory variables can be used to deal with CreatureFactories.
 
 function Mutate(string MutateString, PlayerPawn Sender) {
-	local ShowFactories SF;
+	local CommandShowFactories SF;
 	
 	if(Left(Caps(MutateString),4) == "HELP") {
 		Sender.BroadcastMessage("Command overview for MonsterHuntAssist:");
