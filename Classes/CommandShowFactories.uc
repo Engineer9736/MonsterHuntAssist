@@ -1,4 +1,4 @@
-class ShowFactories extends Actor;
+class CommandShowFactories extends Actor;
 
 function ShowFactories(PlayerPawn Sender) {
 	local ThingFactory TF;

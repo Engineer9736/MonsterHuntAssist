@@ -57,8 +57,9 @@ function Mutate(string MutateString, PlayerPawn Sender) {
 	}
 	
 	if(Caps(MutateString) == "SHOWFACTORIES") {
-		SF = Spawn(class'ShowFactories');
+		SF = Spawn(class'CommandShowFactories');
 		SF.ShowFactories(Sender);
+		Sender.BroadcastMessage("ShowFactories command finished.");
 	}
 	
 	if(Caps(MutateString) == "SAVELOC") {
