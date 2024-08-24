@@ -1,11 +1,10 @@
 class MonsterHuntAssist expands Mutator;
 
+// Note: CreatureFactory is a subclass of ThingFactory. So CreatureFactory will have all the same properties that ThingFactory has.
+// Also ThingFactory variables can be used to deal with CreatureFactories.
+
 function Mutate(string MutateString, PlayerPawn Sender) {
-	local SuperShockRifle ssr;
-	local ThingFactory TF;
-	local CreatureFactory CF;
-	local int i;
-	local Actor Owner;
+	local ShowFactories SF;
 	
 	if(Left(Caps(MutateString),4) == "HELP") {
 		Sender.BroadcastMessage("Command overview for MonsterHuntAssist:");
@@ -58,24 +57,8 @@ function Mutate(string MutateString, PlayerPawn Sender) {
 	}
 	
 	if(Caps(MutateString) == "SHOWFACTORIES") {
-		
-		i = 0;
-		
-		// Set the display style of all factories to visible.
-		foreach AllActors(class'ThingFactory', TF) {
-			TF.bHidden = false;
-			i++;
-		}
-		
-		foreach AllActors(class'CreatureFactory', CF) {
-			CF.bHidden = false;
-			i++;
-		}
-		
-		Sender.BroadcastMessage("Made " $ i $ " factories visible.");
-		
-		// Find a way to display the remaining spawncount. Perhaps this can be taken from FBar.
-		
+		SF = Spawn(class'ShowFactories');
+		SF.ShowFactories(Sender);
 	}
 	
 	if(Caps(MutateString) == "SAVELOC") {

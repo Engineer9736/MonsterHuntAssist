@@ -1,1 +1,1 @@
-..\System\UnrealTournament.exe DM-Deck16][?Mutator=MonsterHuntAssist.MonsterHuntAssist
+..\System\UnrealTournament.exe MH-TrainCommando?Mutator=MonsterHuntAssist.MonsterHuntAssist

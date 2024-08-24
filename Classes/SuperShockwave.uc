@@ -17,7 +17,7 @@ simulated function Timer()
 {
 
 	local actor Victims;
-	local float damageScale, dist, MoScale;
+	local float dist, MoScale;
 	local vector dir;
 
 	ShockSize =  130 * (Default.LifeSpan - LifeSpan) + 3.5/(LifeSpan/Default.LifeSpan+0.05);
