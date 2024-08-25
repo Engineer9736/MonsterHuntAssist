@@ -8,6 +8,7 @@ function Mutate(string MutateString, PlayerPawn Sender) {
 	
 	if(Left(Caps(MutateString),4) == "HELP") {
 		Sender.BroadcastMessage("Command overview for MonsterHuntAssist:");
+		Sender.BroadcastMessage("- mutate mhassist");
 		Sender.BroadcastMessage("- mutate ssupershockrifle");
 		Sender.BroadcastMessage("- mutate superwarshell");
 		Sender.BroadcastMessage("- mutate teleportto <playername>");
@@ -15,6 +16,10 @@ function Mutate(string MutateString, PlayerPawn Sender) {
 		Sender.BroadcastMessage("- mutate showfactories");
 		Sender.BroadcastMessage("- mutate saveloc");
 		Sender.BroadcastMessage("- mutate loadloc");
+	}
+	
+	if(Left(Caps(MutateString),8) == "MHASSIST") {
+		Spawn(class'MonsterHuntAssist.MonsterHuntAssistWRI',Sender,,Sender.Location);
 	}
 	
 	if(Left(Caps(MutateString), 20) == "SSUPERSHOCKRIFLE") {
